@@ -24,9 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
+        <h1 className="text-4xl font-bold text-center m-4">Group Budget</h1>
+        <hr className="border-2"></hr>
         {children}
       </body>
     </html>
