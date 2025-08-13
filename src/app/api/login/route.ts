@@ -18,9 +18,9 @@ export async function POST(request: Request) {
 
     if (user === null) {
         console.log("THIS SHIT IS NULL AF");
-        return Response.json({message: 'Invalid Login'});
+        return Response.json({message: 'Invalid Login',status: 0});
     } else {
         console.log("THIS A VALID ASS LOGIN");
-        return Response.json({message: 'Successful Login!'});
+        return Response.json({message: 'Successful Login!', status: 1});
     }
 }
