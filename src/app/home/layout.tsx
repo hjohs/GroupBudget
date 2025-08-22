@@ -5,6 +5,7 @@ export default function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    //TODO: add side nav bar
   return (
     <div>
         {children}
