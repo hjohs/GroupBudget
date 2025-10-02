@@ -1,11 +1,7 @@
 'use client'
 
-import LoginForm from "./login/loginForm";
+import { redirect } from "next/navigation" 
 
 export default function Login() {
-    return (
-      <div className="flex flex-col m-8 min-h-screen">
-        <LoginForm/>
-      </div>
-    )
+    redirect('/login');
 }

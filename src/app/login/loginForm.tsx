@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
-    //TODO: password encryption
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginState, setLoginState] = useState("");

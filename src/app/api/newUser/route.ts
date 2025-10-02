@@ -25,12 +25,8 @@ export async function POST(request: Request) {
         return Response.json({message:'Fields can not be empty', status: 0});
     }
 
-    const hashedPassword = await bcrypt.hash(password,14);
+    const hashedPassword = await bcrypt.hash(password,12);
 
-    //TODO: Add password validation
-    //TODO: Navigate to home on success
-    //TODO: Failure and success messages
-    
 
     const newUser = await prisma.users.create({
         data: {
@@ -39,7 +35,7 @@ export async function POST(request: Request) {
         }
     })
     console.log('New user created',newUser);
-
+    
     return Response.json({message: "Registration successful!", status: 1})
     
 }
