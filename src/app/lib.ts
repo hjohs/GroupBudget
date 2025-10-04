@@ -1,4 +1,4 @@
-import { SignJWT, jwtVerify } from 'jose';
+import { JWTPayload, SignJWT, jwtVerify } from 'jose';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
@@ -15,7 +15,7 @@ export async function encrypt(payload: any) {
 }
 
 // Decrypts a JWT 
-export async function decrypt(input: string) {
+export async function decrypt(input: string) : Promise<JWTPayload> {
     const { payload } = await jwtVerify(input, key, {
         algorithms: ['HS256'],
     })
@@ -28,11 +28,11 @@ export async function updateSession(request: NextRequest, session : string) {
     //Create updated JWT for session
     const parsed = await decrypt(session);
     const expires = new Date(Date.now() + 1000 * 60 * 10);
-    const newJWT = await encrypt({parsed}); 
+    const newJWT = await encrypt(parsed); 
 
     //Set new session in cookies
     const cookieStore = await cookies();
-    cookieStore.set('session',session, {expires, httpOnly: true});
+    cookieStore.set('session',newJWT, {expires, httpOnly: true});
 
     const res = NextResponse.next();
     
