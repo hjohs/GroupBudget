@@ -21,7 +21,7 @@ export default function HomeSidebar() {
         <Sidebar>
             <SidebarItems>
                 <SidebarItemGroup>
-                    <SidebarItem href="../home/newBudget" icon={() => <CiCirclePlus className="text-2xl" />} className="pb-4 text-lg">
+                    <SidebarItem href="/home/newBudget" icon={() => <CiCirclePlus className="text-2xl" />} className="pb-4 text-lg">
                         Create New Budget
                     </SidebarItem>
                     <SidebarItem onClick={handleLogout} icon={CiLogout} className="pb-4 text-lg">

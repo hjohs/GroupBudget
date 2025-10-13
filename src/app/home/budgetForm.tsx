@@ -1,11 +1,14 @@
 'use client';
 
+import { redirect } from 'next/dist/server/api-utils';
 import { FormEvent, useState } from 'react';
+import { useRouter } from "next/navigation";
 
 export default function BudgetForm() {
     const [budgetName,setBudgetName] = useState("");
     const [budgetAmount,setBudgetAmount] = useState("");
     const [creationState,setCreationState] = useState("");
+    const router = useRouter();
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -22,6 +25,9 @@ export default function BudgetForm() {
                 setCreationState(data.message);
             } else if (data.status == 1) {
                 setCreationState(data.message);
+                const budget_id = data.budget_id;
+                console.log(budget_id);
+                router.push(`/home/budget/${budget_id}`);
             }
         }
     }

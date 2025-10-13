@@ -31,6 +31,6 @@ export async function POST(request: Request) {
             name
         }
     })
-    console.log(newBudget);
-    return Response.json({message: "Creation successful!", status: 1}) 
+
+    return Response.json({message: "Creation successful!", status: 1, budget_id: newBudget.budget_id.toString()}) 
 }

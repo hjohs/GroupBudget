@@ -7,8 +7,12 @@ export default function CategoryForm() {
     const [categoryName,setCategoryName] = useState("");
     const [maxSpend,setMaxSpend] = useState("");
 
-    function handleSubmit() {
-
+    async function handleSubmit() {
+        const res = await fetch('/api/category',{
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({categoryName,maxSpend})
+        })
     }
 
     return (
