@@ -26,7 +26,6 @@ export default function BudgetForm() {
             } else if (data.status == 1) {
                 setCreationState(data.message);
                 const budget_id = data.budget_id;
-                console.log(budget_id);
                 router.push(`/home/budget/${budget_id}`);
             }
         }

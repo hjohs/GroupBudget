@@ -12,7 +12,6 @@ export default async function middleware(request: NextRequest) {
             || request.nextUrl.pathname.startsWith("/_next") 
             || request.nextUrl.pathname.startsWith("/newUser")
             || request.nextUrl.pathname.startsWith("/api")) {
-        console.log('Pathame Match');
         return;
     }
     else if (!session) {

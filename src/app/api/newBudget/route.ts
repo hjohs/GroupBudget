@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { getSession } from '@/app/lib';
+import { headers } from 'next/headers';
 
 const prisma = new PrismaClient();
 
@@ -17,7 +18,6 @@ export async function POST(request: Request) {
             owner_id: owner_id
         }
     })
-    console.log("UNIQUE:", uniqueBudget);
     
     // Returns error message if owned budget with same name is found
     if (uniqueBudget) {
@@ -31,6 +31,16 @@ export async function POST(request: Request) {
             name
         }
     })
+
+
+    const header = await headers();
+    const host = header.get("host");
+    await fetch(`http://${host}/api/budgetMembership`,{
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({user_id:owner_id.toString(),budget_id: newBudget.budget_id.toString()})
+        } 
+    )
 
     return Response.json({message: "Creation successful!", status: 1, budget_id: newBudget.budget_id.toString()}) 
 }

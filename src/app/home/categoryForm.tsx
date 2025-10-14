@@ -19,7 +19,6 @@ export default function CategoryForm() {
             body: JSON.stringify({categoryName,maxSpend,budget_id})
         })
         const data = await res.json();
-        console.log(data);  
         setCreationState(data.message);
     }
 

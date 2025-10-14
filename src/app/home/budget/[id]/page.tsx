@@ -11,7 +11,6 @@ export default async function BudgetPage({params}: {params: { id: string }}) {
                 headers: {"Content-Type": "application/json"},
                 });
     const {budget,message} = await res.json();
-    console.log(message);
 
     return (
         <div className="flex flex-col">
