@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
-    console.log(searchParams);
     const budget_id = searchParams.get("id");
 
     if (!budget_id) {
@@ -13,17 +12,14 @@ export async function GET(request: Request) {
     }
 
     console.log(budget_id)
-    console.log("BIGINT VERSION: ",BigInt(budget_id) )
     const budget = await prisma.budgets.findUnique({
         where: {
             budget_id: BigInt(budget_id)
         }
     })
-    console.log("IN BUDGET GET")
 
     
     if (budget) {
-
         const jsonBudget = {
             budget_id: (budget.budget_id).toString(),
             created_at: budget.created_at,
