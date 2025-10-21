@@ -39,7 +39,7 @@ model categories {
 
 model transactions {
   transaction_id BigInt     @id @unique @default(autoincrement())
-  date           DateTime?  @db.Date
+  date           String?
   amount         Int
   name           String
   category_id    BigInt

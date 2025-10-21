@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import CategoryForm from "../../categoryForm";
+import CategoryList from "../../categoryList";
 
 export default async function BudgetPage({params}: {params: { id: string }}) {
     const header = await headers();
@@ -11,11 +12,17 @@ export default async function BudgetPage({params}: {params: { id: string }}) {
                 headers: {"Content-Type": "application/json"},
                 });
     const {budget,message} = await res.json();
+    const { categories } = budget;
+
 
     return (
-        <div className="flex flex-col">
-            <h1 className="text-2xl pt-3">{budget.name}</h1>
-            <CategoryForm></CategoryForm>
+        <div className="">
+            <h1 className="text-2xl pt-3 text-center">{budget.name}</h1>
+            <div className="w-1/5 flex flex-col pl-6 items-center">
+                <CategoryForm></CategoryForm>
+                <br></br>
+                <CategoryList categories={categories}></CategoryList>
+            </div>
         </div>
     )
 }

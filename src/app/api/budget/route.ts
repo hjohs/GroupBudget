@@ -14,6 +14,9 @@ export async function GET(request: Request) {
     const budget = await prisma.budgets.findUnique({
         where: {
             budget_id: BigInt(budget_id)
+        }, 
+        include: {
+            categories: true
         }
     })
 
@@ -23,8 +26,14 @@ export async function GET(request: Request) {
             budget_id: (budget.budget_id).toString(),
             created_at: budget.created_at,
             owner_id: (budget.owner_id).toString(),
-            name: budget.name
+            name: budget.name,
+            categories: budget.categories.map(cat => ({
+                ...cat, 
+                category_id: cat.category_id.toString(),
+                budget_id: cat.budget_id.toString(),
+            }))
         }
+
         return Response.json({status: 1, budget: jsonBudget, message: "Budget found"})
     } else {
         return Response.json({status: 0, message: "No budget found"})
