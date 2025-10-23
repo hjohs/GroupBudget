@@ -16,3 +16,33 @@ export async function POST(request: Request) {
 
     return Response.json({status: 1, message: "Membership creation successful"})
 }
+
+export async function GET(request: Request) {
+    const { searchParams } = new URL(request.url);
+    const user_id = searchParams.get("user_id");
+
+    if (!user_id) {
+        return Response.json({status:0, message: "No user id found"});
+    }
+
+    const user = await prisma.users.findUnique({
+        where: {
+            user_id: BigInt(user_id)
+        },
+        include: {
+            budgets: true
+        }
+    })
+
+    if (!user) {
+        return Response.json({status: 0, messsage: "User not found"});
+    } else {
+        const jsonUser = {
+            budgets: user.budgets.map(budg => ({
+                budget_id: budg.budget_id.toString(),
+                name: budg.name,
+            }))
+        };
+        return Response.json({status: 1, message: "Budgets retrieved successfully", user: jsonUser});
+    }
+}

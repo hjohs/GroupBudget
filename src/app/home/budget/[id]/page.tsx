@@ -21,7 +21,7 @@ export default async function BudgetPage({params}: {params: { id: string }}) {
             <div className="w-1/5 flex flex-col pl-6 items-center">
                 <CategoryForm></CategoryForm>
                 <br></br>
-                <CategoryList categories={categories}></CategoryList>
+                <CategoryList categories={categories} id={id}></CategoryList>
             </div>
         </div>
     )
