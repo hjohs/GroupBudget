@@ -15,8 +15,6 @@ export default async function Category({params}: {params: { category_id: string 
 
     const {status,message,body} = await res.json();
     const {transactions,category} = body;
-    console.log(transactions);
-    console.log(category);
 
     const listTransactions = transactions.map((transaction: { transaction_id: Key; name: string, amount: string | number | bigint, date: ReactNode }) => 
     <li key={transaction.transaction_id} className="hover:bg-gray-200">

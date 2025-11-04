@@ -31,7 +31,7 @@ export default async function BudgetList() {
         
         const body = await res.json();
         const {budgets} = body.user;
-        console.log(budgets)
+
         listBudgets = budgets.map((budget: {
             budget_id: Key | null | undefined; budget: { id: Key | null | undefined; }; name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; 
 }) =>  

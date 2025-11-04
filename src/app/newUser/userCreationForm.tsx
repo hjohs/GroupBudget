@@ -13,7 +13,6 @@ export default function UserCreationForm() {
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        console.log("Submit Being Handled...");
         const res = await fetch('/api/newUser',{
             method: 'POST',
             headers: {
