@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import CategoryForm from "../../categoryForm";
 import CategoryList from "../../categoryList";
+import { PieChart } from "recharts";
 
 export default async function BudgetPage({params}: {params: { id: string }}) {
     const header = await headers();
@@ -18,7 +19,7 @@ export default async function BudgetPage({params}: {params: { id: string }}) {
     return (
         <div className="">
             <h1 className="text-2xl pt-3 text-center">{budget.name}</h1>
-            <div className="w-1/5 flex flex-col pl-6 items-center">
+            <div className="flex flex-col items-center">
                 <CategoryForm></CategoryForm>
                 <br></br>
                 <CategoryList categories={categories} id={id}></CategoryList>

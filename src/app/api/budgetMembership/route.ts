@@ -35,6 +35,7 @@ export async function GET(request: Request) {
     })
 
     if (!user) {
+        console.log("AGENT FAILURE")
         return Response.json({status: 0, messsage: "User not found"});
     } else {
         const jsonUser = {
@@ -43,6 +44,8 @@ export async function GET(request: Request) {
                 name: budg.name,
             }))
         };
-        return Response.json({status: 1, message: "Budgets retrieved successfully", user: jsonUser});
+        console.log("AGENT GOT ME");
+        console.log(jsonUser);
+        return Response.json({status: 200, message: "Budgets retrieved successfully", user: jsonUser});
     }
 }

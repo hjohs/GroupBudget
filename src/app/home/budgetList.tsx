@@ -38,7 +38,7 @@ export default async function BudgetList() {
             <li key={budget.budget_id} className="hover:bg-gray-200" > 
                 <a href={`/home/budget/${budget.budget_id}`}>
                     <div className="">
-                        <h2 className='text-xl border-2 pb-1 pt-1'>{budget.name}</h2>
+                        <h2 className='text-xl border-2 pb-1 pt-1 pl-2 pr-2'>{budget.name}</h2>
                     </div></a></li>);
         
 
@@ -47,7 +47,7 @@ export default async function BudgetList() {
     
 
     return (
-        <div className='border-1 rounded-sm w-2/5 text-center'>
+        <div className='border-1 rounded-sm w-6/5 text-center'>
             <ol>
                 {listBudgets}
             </ol>

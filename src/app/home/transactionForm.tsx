@@ -39,9 +39,9 @@ export default function TransactionForm() {
     }
 
     return (
-        <div className="flex pl-4">
+        <div className="flex pr-5">
             <div className='flex-col'>
-                <h4 className="pb-.5 pt-4 text-center">{creationState}</h4>
+                <h4 className="text-center ">{creationState}</h4>
                 <div className='border-2 mt-3 p-2'>
                     <h1 className='pb-1 text-center'>Add a Transaction</h1>
                     <form method='post' onSubmit={handleSubmit} className='flex flex-col w-[250px]'>

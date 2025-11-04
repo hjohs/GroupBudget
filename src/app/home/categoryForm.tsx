@@ -29,7 +29,7 @@ export default function CategoryForm() {
     }
 
     return (
-        <div className="flex">
+        <div className="flex flex-col">
             <h4 className="pb-.5 pt-4">{creationState}</h4>
             <div className='border-2 mt-3 p-2'>
                 <h1 className='pb-1 text-center'>Create New Category</h1>

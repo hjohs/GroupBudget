@@ -11,10 +11,10 @@ export default async function CategoryList({categories,id}) {
     const listCategories = categories.map(category => <li key={category.category_id} className="hover:bg-gray-200"><a href={`/home/budget/${id}/category/${category.category_id}`}><div className=""><h2>{category.name}:</h2> {category.current_spend}/{category.max_spend}<hr></hr></div></a></li>);
 
     return (
-        <div className="flex flex-col border-2  text-center">
-            <h2 className="text-xl pb-1 pt-1">Categories</h2>
+        <div className="flex flex-col border-2 text-center">
+            <h2 className="text-xl pt-1">Categories</h2>
             <hr className="border-2"></hr>
-            <ul className="pb-2 pt-2">{listCategories}</ul>
+            <ul className="">{listCategories}</ul>
         </div>
     )
 }
